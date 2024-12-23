@@ -19,8 +19,8 @@ bot.onText(/\/start/, (msg) => {
                     {
                         text: 'Order Food', // Button text
                         web_app: {
-                            url: 'https://fintory-nu.vercel.app', // Replace with your mini app URL
-                        },
+                            url: 'https://surplus-two.vercel.app', // Replace with your mini app URL
+                        },      
                     },
                 ],
             ],

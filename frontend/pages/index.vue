@@ -21,33 +21,36 @@
     </header>
 
     <!-- Registration Form -->
-    <form 
-      @submit.prevent="registerUser" 
-      class="w-full max-w-xs sm:max-w-sm md:max-w-md bg-white rounded-lg shadow-md p-6 text-gray-800"
-    >
-      <div class="mb-4">
-        <label for="email" class="block text-sm font-medium mb-2">Email Address</label>
-        <input
-          type="email"
-          id="email"
-          v-model="email"
-          required
-          placeholder="Enter your email"
-          class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-[#F86901] focus:outline-none"
-        />
-      </div>
-      <button
-        type="submit"
-        class="w-full py-3 bg-[#F86901] hover:bg-[#FF8C42] text-white font-semibold rounded-lg shadow-md"
+    <div class="w-full max-w-xs sm:max-w-sm md:max-w-md">
+      <form 
+        v-if="!registered" 
+        @submit.prevent="registerUser" 
+        class="bg-white rounded-lg shadow-md p-6 text-gray-800"
       >
-        Register Now
-      </button>
-    </form>
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-medium mb-2">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            v-model="email"
+            required
+            placeholder="Enter your email"
+            class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-[#F86901] focus:outline-none"
+          />
+        </div>
+        <button
+          type="submit"
+          class="w-full py-3 bg-[#F86901] hover:bg-[#FF8C42] text-white font-semibold rounded-lg shadow-md"
+        >
+          Register Now
+        </button>
+      </form>
 
-    <!-- Thank You Message -->
-    <p v-if="registered" class="mt-6 text-lg font-medium text-center px-4">
-      🎉 Thank you for registering! Stay tuned for updates.
-    </p>
+      <!-- Success Message -->
+      <p v-if="registered" class="bg-green-100 text-green-800 text-center rounded-lg p-4 mt-4">
+        🎉 Thank you for registering! Stay tuned for updates.
+      </p>
+    </div>
   </div>
 </template>
 
@@ -59,7 +62,7 @@ const registered = ref(false);
 
 const registerUser = () => {
   if (email.value) {
-    registered.value = true;
+    registered.value = true; // Show success message
     email.value = ""; // Clear input after registration
   }
 };
